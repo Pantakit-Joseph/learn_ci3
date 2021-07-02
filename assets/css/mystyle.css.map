@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,IAAK,CACD,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,eAAe,CAAE,MAAM,CACvB,UAAU,CAAE,KAAK,CAErB,cAAe,CACX,KAAK,CAAE,KAAK,CACZ,OAAO,CAAE,CAAC,CAEd,CAAE,CACE,eAAe,CAAE,IAAI,CAEzB,cAAe,CACX,KAAK,CAfD,OAAO",
+"sources": ["../sass/mystyle.scss"],
+"names": [],
+"file": "mystyle.css"
+}

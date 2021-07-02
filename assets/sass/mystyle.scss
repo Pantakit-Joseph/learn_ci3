@@ -1,0 +1,17 @@
+$error: #F1948A;
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.my-card-login {
+    width: 28rem;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.my-form-error {
+    color: $error;
+}

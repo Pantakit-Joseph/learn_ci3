@@ -5,6 +5,8 @@ $login = array(
 	'value' => set_value('login'),
 	'maxlength'	=> 80,
 	'size'	=> 30,
+    'class' => 'form-control',
+	'placeholder' => 'Email Address',
 );
 if ($login_by_username AND $login_by_email) {
 	$login_label = 'Email or login';
@@ -17,6 +19,8 @@ $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
 	'size'	=> 30,
+	'class' => 'form-control',
+	'placeholder' => 'Password',
 );
 $remember = array(
 	'name'	=> 'remember',
@@ -53,16 +57,20 @@ $captcha = array(
         <div class="card-body">
             <h2 class="text-center ">ลงชื่อชื่อเข้าสู่ระบบ</h1>
 			<?php echo form_open($this->uri->uri_string()); ?>
-                    <label for="login" class="form-label">อีเมล์</label>
-                    <input type="email" name="login" id="login" class="form-control" placeholder="Email"
-                        aria-describedby="emailHelp">
+                    <?php echo form_label('อีเมล์', $login['id'], 'class="form-label"'); ?>
+                    <?php echo form_input($login); ?>
                     <div id="emailHelp" class="form-text my-form-error">
 					<?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?>
                     </div>
 
-                    <label for="password" class="form-label mt-2">ระหัสผ่าน</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password"
-                        aria-describedby="passlHelp">
+                    <!-- <?php echo form_label('อีเมล์', $login['id'], 'class="form-label"'); ?>
+                    <?php echo form_input($login); ?>
+                    <div id="emailHelp" class="form-text my-form-error">
+					<?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?>
+                    </div> -->
+
+                    <?php echo form_label('ระหัสผ่าน', $password['id'], 'class="form-label mt-2"'); ?>
+		            <?php echo form_password($password); ?>
                     <div id="passHelp" class="form-text my-form-error">
 					<?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?>
                     </div>
@@ -92,7 +100,10 @@ $captcha = array(
                     <hr>
                     <div class="text-center">
                         <?php echo anchor('/auth/forgot_password/', 'ลืมรหัสผ่าน'); ?>
-                        <?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', ' | ลงทะเบียน'); ?>
+                        <?php if ($this->config->item('allow_registration', 'tank_auth')) {
+                            echo ' | ';
+                            echo anchor('/auth/register/', 'ลงทะเบียน');
+                        }  ?>
                     </div>
 
         </div>

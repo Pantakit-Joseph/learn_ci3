@@ -64,25 +64,25 @@ $captcha = array(
         <div class="card-body">
             <h2 class="text-center ">ลงทะเบียน</h1>
 			<?php echo form_open($this->uri->uri_string()); ?>
-					<?php echo form_label('ชื่อผู้ใช้', 'username', 'class="form-label"'); ?>
+					<?php echo form_label('ชื่อผู้ใช้', $username['id'], 'class="form-label"'); ?>
 					<?php echo form_input($username); ?>
                     <div class="form-text my-form-error">
 						<?php echo form_error($username['name']); ?><?php echo isset($errors[$username['name']])?$errors[$username['name']]:''; ?>
                     </div>
 
-					<?php echo form_label('อีเมล์', 'email', 'class="form-label"'); ?>
+					<?php echo form_label('อีเมล์', $email['id'], 'class="form-label"'); ?>
                     <?php echo form_input($email); ?>
                     <div class="form-text my-form-error">
 						<?php echo form_error($email['name']); ?><?php echo isset($errors[$email['name']])?$errors[$email['name']]:''; ?>
                     </div>
 
-					<?php echo form_label('ระหัสผ่าน', 'password', 'class="form-label"'); ?>
+					<?php echo form_label('ระหัสผ่าน', $password['id'], 'class="form-label"'); ?>
                     <?php echo form_password($password); ?>
                     <div class="form-text my-form-error">
 						<?php echo form_error($password['name']); ?>
                     </div>
 
-					<?php echo form_label('ยืนยันระหัสผ่าน', 'confirm_password', 'class="form-label"'); ?>
+					<?php echo form_label('ยืนยันระหัสผ่าน', $confirm_password['id'], 'class="form-label"'); ?>
                     <?php echo form_password($confirm_password); ?>
                     <div class="form-text my-form-error">
 						<?php echo form_error($confirm_password['name']); ?>
@@ -96,7 +96,7 @@ $captcha = array(
 								<?php echo $captcha_html; ?>
 							</div>
 
-							<?php echo form_label('รหัสยืนยัน', 'captcha', 'class="form-label"'); ?>
+							<?php echo form_label('รหัสยืนยัน', $captcha['id'], 'class="form-label"'); ?>
 							<?php echo form_input($captcha); ?>
 							<div class="form-text my-form-error">
 								<?php echo form_error($captcha['name']); ?>

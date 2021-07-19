@@ -5,7 +5,7 @@ $login = array(
 	'value' => set_value('login'),
 	'maxlength'	=> 80,
 	'size'	=> 30,
-    'class' => 'form-control',
+    'class' => 'form-control'.check_error('login', isset($errors['login'])),
 	'placeholder' => 'Email Address',
 );
 if ($login_by_username AND $login_by_email) {
@@ -19,7 +19,7 @@ $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
 	'size'	=> 30,
-	'class' => 'form-control',
+	'class' => 'form-control'.check_error('password', isset($errors['password'])),
 	'placeholder' => 'Password',
 );
 $remember = array(
@@ -35,9 +35,14 @@ $captcha = array(
 	'id'	=> 'captcha',
 	'maxlength'	=> 8,
     'autocomplete' => 'off',
-    'class' => 'form-control',
+    'class' => 'form-control'.check_error('captcha'),
 	'placeholder' => 'Confirmation Code',
 );
+function check_error($name, $error = false) {
+    if (!empty(form_error($name)) OR $error) {
+        return ' is-invalid';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,25 +58,24 @@ $captcha = array(
 </head>
 
 <body>
+    <pre>
+    <?php 
+        
+    ?>
+    </pre><br />
     <div class="card my-card-login">
         <div class="card-body">
             <h2 class="text-center ">ลงชื่อชื่อเข้าสู่ระบบ</h1>
 			<?php echo form_open($this->uri->uri_string()); ?>
                     <?php echo form_label('อีเมล์', $login['id'], 'class="form-label"'); ?>
                     <?php echo form_input($login); ?>
-                    <div id="emailHelp" class="form-text my-form-error">
+                    <div id="emailHelp" class="invalid-feedback">
 					<?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?>
                     </div>
 
-                    <!-- <?php echo form_label('อีเมล์', $login['id'], 'class="form-label"'); ?>
-                    <?php echo form_input($login); ?>
-                    <div id="emailHelp" class="form-text my-form-error">
-					<?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?>
-                    </div> -->
-
                     <?php echo form_label('ระหัสผ่าน', $password['id'], 'class="form-label mt-2"'); ?>
 		            <?php echo form_password($password); ?>
-                    <div id="passHelp" class="form-text my-form-error">
+                    <div id="passHelp" class="invalid-feedback">
 					<?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?>
                     </div>
                     <div class="form-check">
@@ -89,7 +93,7 @@ $captcha = array(
 
 							<?php echo form_label('รหัสยืนยัน', $captcha['id'], 'class="form-label"'); ?>
 							<?php echo form_input($captcha); ?>
-							<div class="form-text my-form-error">
+							<div class="invalid-feedback">
 								<?php echo form_error($captcha['name']); ?>
 							</div>
 					<?php }

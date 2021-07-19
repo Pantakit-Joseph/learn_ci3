@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 			$data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
 
 			$this->form_validation->set_rules('login', 'Email', 'trim|required|xss_clean');
-			// ,array('required' => 'กรุณาป้อน E-mail หรือ Username')
+			//,array('required' => 'กรุณาป้อน E-mail หรือ Username')
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 			// ,array('required' => 'กรุณาป้อน รหัสผ่าน' )
 			$this->form_validation->set_rules('remember', 'Remember me', 'integer');
@@ -623,9 +623,7 @@ class Auth extends CI_Controller
 			$this->form_validation->set_message('_check_captcha', $this->lang->line('auth_captcha_expired'));
 			return FALSE;
 
-		} elseif (($this->config->item('captcha_case_sensitive', 'tank_auth') AND
-				$code != $word) OR
-				strtolower($code) != strtolower($word)) {
+		} elseif (($this->config->item('captcha_case_sensitive', 'tank_auth') AND $code != $word) OR strtolower($code) != strtolower($word)) {
 			$this->form_validation->set_message('_check_captcha', $this->lang->line('auth_incorrect_captcha'));
 			return FALSE;
 		}
